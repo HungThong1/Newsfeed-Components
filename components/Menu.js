@@ -35,16 +35,16 @@ function menuMaker(array){
   //Instantiate
   const menu = document.createElement("div");
   const menuItems = document.createElement("ul");
-  const list = document.createElement("li");
-  //structures
-  menu.appendChild(menuItems)
-  menuItems.appendChild(list);
+    //structures
+    menu.appendChild(menuItems)
   //class names
   menu.classList.add("menu")
   //loop
   array.forEach(menuObj => {
+    const list = document.createElement("li");
     let menuElement = document.createTextNode(menuObj);
     list.appendChild(menuElement);
+    menuItems.appendChild(list);
   });
   //button
   const menuButton = document.querySelector(".menu-button")
