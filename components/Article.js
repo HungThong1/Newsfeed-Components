@@ -114,3 +114,46 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+articles = document.querySelector(".articles")
+function articleMaker({title,date,firstParagraph,secondParagraph,thirdParagraph}){
+  //Instantiate element
+  const article = document.createElement("div");
+  const articleTitle = document.createElement("h2");
+  const articleDate = document.createElement("p");
+  const first = document.createElement("p");
+  const second = document.createElement("p");
+  const third = document.createElement("p");
+  const expandButton = document.createElement("span");
+  //Structures
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(first);
+  article.appendChild(second);
+  article.appendChild(third);
+  article.appendChild(expandButton);
+  //Class names
+  article.classList.add("article");
+  articleDate.classList.add("date");
+  expandButton.classList.add("expandButton");
+  //Text content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  first.textContent = firstParagraph;
+  second.textContent = secondParagraph;
+  third.textContent = thirdParagraph;
+  expandButton.textContent = "EXPAND"
+  // button
+  expandButton.addEventListener("click", event => {
+    article.classList.toggle("article-open");
+  })
+  // return
+  return article
+}
+//loop
+data.forEach(articleObj => {
+  const articleElement = articleMaker(articleObj);
+  articles.appendChild(articleElement);
+})
+// test add
+const test = articleMaker({ title: 'Aoo', date: 'Dec 12, 1990' , firstParagraph: "2412412" , secondParagraph: "fewfwe" , thirdParagraph: "ed214d"});
+articles.appendChild(test);
